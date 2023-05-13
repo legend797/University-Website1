@@ -1,162 +1,218 @@
-import React from "react";
-import { useState } from "react";
-import Banner from "../images/Logo.webp";
+// import React from "react";
+// import { useState } from "react";
+// import Banner from "../images/Logo.webp";
+// import Bar from "../images/bars-solid.svg";
+// import Close from "../images/xmark-solid.svg";
+
+
+// function NavBar() {
+//   const Links=[
+//     {name:"HOME",path:"#Home"},
+//     {name:"ABOUT",path:"#About"},
+//     {name:"IUC",path:"#Iuc"},
+//     {name:"COURSE",path:"#Course"},
+//     {name:"NEW&EVENTS",path:"#New"}
+//   ]
+
+
+//     let [isOpen,setIsOpen] = useState(false);
+//     return(
+//       <nav className="fixed w-full h-28 z-10  bg-[#f3f3f3] bg-opacity-80 shadow-lg backdrop-blur-xl">
+//         <div className="flex justify-between lg:items-center w-full h-full">
+//             <img className="w-[100px] h-[100px] ml-7" src={Banner} alt="banner" />
+//             <img
+//           className="w-6 h-6 cursor-pointer lg:hidden"
+//           src={isOpen ? Close : Bar}
+//           alt="bar"
+//           onClick={() => setIsOpen(!isOpen)}
+//         />
+//             <ul className={`bg-red-200 z-20 md:pl-10 pr-24 lg:h-auto h-screen max-lg:pt-10 lg:static absolute top-0 ${!isOpen ? "right-[-100%]" : "right-0"} `}>
+//               {
+//                 Links.map((link) =>(
+//                   <li className="lg:inline-block lg:ml-10 ml-5 max-lg:my-6 lg:border-b-4 lg:border-transparent lg:hover:border-black duration-500" key={link.name}>
+//                   <a href={link.path} className=" sm:text-sm md:text-md lg:text-lg  py-2 inline-block font-medium">{link.name}</a>
+//                 </li>
+//                 )
+
+//                 )
+//               }
+
+              
+//             </ul>
+            
+//             </div>
+//       </nav>
+        
+//     );
+//     }
+//     export default NavBar; 
+
+
+import React, { useState } from "react";
+import Banner from "../images/Logo.png";
+import Bar from "../images/bars-solid.svg";
+import Close from "../images/xmark-solid.svg";
+import { Link } from 'react-scroll';
+
 
 
 function NavBar() {
-    const [isOpen,setIsOpen] = useState(false);
-    return(
-        <nav className="w-full h-20 shadow-xl bg-white fixed z-10 flex justify-between items-center
-         md:px-8 border-b-1 border-gray-600 border-solid">
-           <div className="bg-blue-500 w-full h-full flex justify-between items-center">
-            {/* Logo*/}
-                <div>
-                 <img className="w-[80px] h-[80px] bg-red-500" src={Banner} />
-                 </div>
-            
-                {/* NavLinks */}
-                <div className={`${isOpen ? "block" : "hidden"} mr-16 bg-lime-500 md:block`}>
-                        <a className="text-xl" href="#Home">Home</a>
-                        <a className="text-xl" href="#About">About</a>
-                        <a className="text-xl" href="#IUC">IUC</a>
-                        <a className="text-xl" href="#Course">Course</a>
-                        <a className="text-xl" href="#New">NEWS&EVENTS</a>
+  const Links=[
+    {name:"HOME",path:"Home"},
+    {name:"ABOUT",path:"About"},
+    {name:"IUC",path:"Iuc"},
+    {name:"COURSE",path:"Course"},
+    {name:"NEW&EVENTS",path:"New"},
+  ]
 
-                </div>
-            </div>
-                         
-            {/* Button */}
-            <div>
-                 <button className="bg-blue-500 block md:hidden"
-                                onClick={() => setIsOpen(!isOpen)}>
-                  <svg   className={`w-6 h-6 ${isOpen ? "hidden" : "block"}`}    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" >
-                          <path fill-rule="evenodd" d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z" clip-rule="evenodd" />
-                   </svg>
-                         
-                    <svg className={`w-6 h-6 ${isOpen ? "block" : "hidden"}`} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" >
-                         <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z" clip-rule="evenodd" />
-                      </svg>
-                </button>            
-              </div>                           
+  const [isOpen, setIsOpen] = useState(false);
+  const handleLinkClick = () =>{
+    setIsOpen(false); 
+  }
+
+  return (
+    <nav className="fixed w-full h-28 z-10 bg-[#f3f3f3] bg-opacity-90 shadow-lg backdrop-blur-xl">
+      <div className="flex justify-between items-center  w-full h-full">
+        <div className="flex justify-between items-center">
+        <img
+          className="w-[80px] h-[80px] ml-4 mr-2 xl:ml-16 cursor-pointer"
+          src={Banner}
+          alt="banner"
+          
+        /><h1 className="w-auto h-full max-sm:text-sm font-robo text-xl uppercase font-bold sm:text-justify">University Of Computer<br></br> Studies (Maubin)</h1>
+        </div>
+         <div className="z-20 rounded-lg border-2 px-3 py-2 bg-[#00a6a6] mr-4 lg:hidden">
+        <img
+          className="w-8 h-8 max-sm:w-4 max-sm:h-4 duration-500 cursor-pointer lg:hidden"
+          
+          src={isOpen ? Close : Bar}
+          alt="bar"
+          onClick={() => setIsOpen(!isOpen)}
+        />
+        </div>
+        <ul className={` xl:mr-24  max-lg:bg-[#f3f3f3] max-lg:w-80 max-lg:bg-opacity-90  max-lg:backdrop-blur-xl  pr-5 lg:h-auto h-screen max-lg:pt-10 lg:static absolute top-0 duration-500 ease-linear ${!isOpen ? "right-[-100%]" : "right-0"}`}>
+          {Links.map((navlink) => (
+            <li className=" lg:inline-block lg:mx-3 xl:mx-6 max-lg:my-6 lg:border-b-4 lg:border-transparent lg:hover:border-[#00a6a6] duration-500 " key={navlink.name}>
+              <Link to={navlink.path} spy={true} smooth={true} duration={800} offset={-50} activeClass="text-[#00a6a6]" className={`hover:text-[#00a6a6] select-none max-lg:font-semibold max-lg:mb-10  max-lg:text-xl max-lg:font-pop text-xl py-1 inline-block font-medium
+               text-gray-700 max-lg:border-b-4 max-lg:border-transparent
+                  max-lg:hover:border-[#00a6a6] duration-500 max-lg:w-auto  max-lg:ml-10 text-center cursor-pointer `} onClick={handleLinkClick}       >{navlink.name}</Link>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </nav>
+  );
+}
+
+export default NavBar;
 
 
-                               
+// import React, { useState, useEffect, useRef } from "react";
+// import Banner from "../images/Logo.webp";
+// import Bar from "../images/bars-solid.svg";
+// import Close from "../images/xmark-solid.svg";
+
+// function NavBar() {
+//   const Links = [
+//     { name: "HOME", path: "#Home" },
+//     { name: "ABOUT", path: "#About" },
+//     { name: "IUC", path: "#Iuc" },
+//     { name: "COURSE", path: "#Course" },
+//     { name: "NEW&EVENTS", path: "#New" },
+//   ];
+
+//   const [isOpen, setIsOpen] = useState(false);
+//   const [activeSection, setActiveSection] = useState();
+//   const observer = useRef();
+
+//   const handleLinkClick = (id) => {
+//     document.getElementById(id).scrollIntoView({
+//       behavior: "smooth",
+//       block: "start",
+//     });
+//     setIsOpen(false);
+//   };
+
+//   const setObserver = (el, id) => {
+//     observer.current = new IntersectionObserver(
+//       ([entry]) => {
+//         if (entry.isIntersecting) {
+//           setActiveSection(id);
+//         }
+//       },
+//       { threshold: 0.7 }
+//     );
+
+//     if (el) {
+//       observer.current.observe(el);
+//     }
+//   };
+
+//   useEffect(() => {
+//     return () => {
+//       if (observer.current) {
+//         observer.current.disconnect();
+//       }
+//     };
+//   }, []);
+
+//   return (
+//     <nav className="fixed w-full h-28 z-10 bg-[#f3f3f3] bg-opacity-90 shadow-lg backdrop-blur-xl">
+//       <div className="flex justify-between items-center w-full h-full">
+//         <div className="flex justify-between items-center">
+//           <img
+//             className="w-[100px] h-[100px] ml-4 xl:ml-16 cursor-pointer"
+//             src={Banner}
+//             alt="banner"
+//           />
+//           <h1 className="w-auto h-full max-sm:text-sm font-robo text-xl uppercase font-bold sm:text-justify">
+//             University Of Computer
+//             <br></br> Studies,Maubin
+//           </h1>
+//         </div>
+//         <div className="z-20 rounded-lg border-2 px-3 py-2 bg-indigo-700 mr-4 lg:hidden">
+//           <img
+//             className="w-8 h-8 max-sm:w-4 max-sm:h-4 duration-500 cursor-pointer lg:hidden"
+//             src={isOpen ? Close : Bar}
+//             alt="bar"
+//             onClick={() => setIsOpen(!isOpen)}
+//           />
+//         </div>
+//         <ul
+//           className={`xl:mr-24 max-lg:bg-[#f3f3f3] max-lg:w-80 max-lg:bg-opacity-90 max-lg:backdrop-blur-xl pr-5 lg:h-auto h-screen max-lg:pt-10 lg:static absolute top-0 duration-500 ease-linear ${
+//             !isOpen ? "right-[-100%]" : "right-0"
+//           }`}
+//         >
+//           {Links.map((navlink) => (
+//             <li
+//               className="lg:inline-block lg:mx-3 xl:mx-6 max-lg:my-6 lg:border-b-4 lg:border-transparent lg:hover:border-sky-500 duration-500"
+//               key={navlink.name}
+//             >
+//               <a
+//                 href={navlink.path}
+//                 onClick={() => handleLinkClick(navlink.path)}
+//                 className={`hover:text-sky-500 active:text-sky-500 max-lg:font-semibold max-lg:mb-10  max-lg:text-xl max-lg:font-pop text-xl py-1 inline-block font-medium
+//                 text-gray-700 max-lg:border-b-4 max-lg:border-transparent
+//                 max-lg:hover:border-sky-500 duration-500 max-lg:w-auto  max-lg:ml-10 text-center ${
+//                   activeSection === navlink.path ? "text-sky-500" : "text-gray-700"
+//                 }`}>
+//                                 {navlink.name}
+//                               </a>
+//                             </li>
+//                           ))}
+//                         </ul>
+//                       </div>
+//                     </nav>
+//                   );
+//                 }
+                
+//                 export default NavBar;
 
      
           
 
 
-     
-
-     </nav> 
-    );
-    }
-    export default NavBar;
-
-
-
-
-
-// import React, { useState } from 'react';
-// import Banner from "../images/Logo.webp"
-
-
-// function NavBar() {
-//  const [isOpen, setIsOpen] = useState(false);
-
-//  return (
-//    <nav className="flex items-center justify-between flex-wrap p-6">
-//      <div className="flex items-center flex-shrink-0 text-white mr-6 lg:mr-72">
-//        <img src={Banner} className="w-100 h-100" alt="Logo" />
-//      </div>
-//      <div className="block lg:hidden">
-//        <button
-//          onClick={() => setIsOpen(!isOpen)}
-//          className="flex items-center px-3 py-2 rounded text-black-500 hover:text-black-400"
-//        >
-//          <svg
-//            className={`fill-current h-3 w-3 ${isOpen ? "hidden" : "block"}`}
-//            viewBox="0 0 20 20"
-//            xmlns="http://www.w3.org/2000/svg"
-//          >
-//            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-//          </svg>
-//          <svg
-//            className={`fill-current h-3 w-3 ${isOpen ? "block" : "hidden"}`}
-//            viewBox="0 0 20 20"
-//            xmlns="http://www.w3.org/2000/svg"
-//          >
-//            <path d="M10 8.586L2.929 1.515 1.515 2.929 8.586 10l-7.071 7.071 1.414 1.414L10 11.414l7.071 7.071 1.414-1.414L11.414 10l7.071-7.071-1.414-1.414L10 8.586z" />
-//          </svg>
-//        </button>
-//      </div>
-//      <div
-//        className={`w-full block flex-grow lg:flex lg:items-center lg:w-auto ${isOpen ? "block" : "hidden"}`}
-//      >
-//        <div className="text-sm lg:flex-grow">
-//          <a href="#" className="block mt-4 lg:inline-block lg:mt-0 text-white-200 mr-4">
-//            First Link
-//          </a>
-//          <a href="#" className="block mt-4 lg:inline-block lg:mt-0 text-white-200 mr-4">
-//            Second Link
-//          </a>
-//          <a href="#" className="block mt-4 lg:inline-block lg:mt-0 text-white-200 mr-4">
-//            Third Link
-//          </a>
-//          <a href="#" className="block mt-4 lg:inline-block lg:mt-0 text-white-200 mr-4">
-//            Fourth Link
-//          </a>
-//        </div>
-       
-//      </div>
-//    </nav>
-//  );
-// }
-// export default NavBar;
-   
-   
-   
-  //  <nav class="absolute z-10">
-  //     <div class="bg-white fixed flex justify-between items-center w-full h-[80px] border-b-1 border-gray-600 border-solid shadow-xl">
-  //       <div class="ml-[40px] font-bold text-blue-950 text-[30px]">Logo</div>
-  //       <div className="w-auto mr-3 rounded-md flex justify-end bg-blue-500">
-  //       <button class="mobile-menu-button px-2 py-3  w-full  md:hidden">
-  //         <svg class="h-6 w-6 text-white " viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  //       </button>
-  //       </div>
-  //       <div class="navLinkCon  md:flex">
-  //         <a class="px-4 font-medium text-base" href="#Home">HOME</a>
-  //         <a class="px-4 font-medium text-base" href="#About">ABOUT</a>
-  //         <a class="px-4 font-medium text-base transition duration-500" href="#IUC">IUC</a>
-  //         <a class="px-4 font-medium text-base" href="#Course">COURSE</a>
-  //         <a class="px-4 font-medium text-base" href="#New">NEW&EVENTS</a>
-  //       </div>
-  //     </div>
-  //     <div class="mobile-menu hidden">
-  //       <a class="block px-4 py-2 font-medium text-base border-b border-gray-600" href="#Home">HOME</a>
-  //       <a class="block px-4 py-2 font-medium text-base border-b border-gray-600" href="#About">ABOUT</a>
-  //       <a class="block px-4 py-2 font-medium text-base transition duration-500" href="#IUC">IUC</a>
-  //       <a class="block px-4 py-2 font-medium text-base border-b border-gray-600" href="#Course">COURSE</a>
-  //       <a class="block px-4 py-2 font-medium text-base" href="#New">NEW&EVENTS</a>
-  //     </div>
-  //     </nav>
-
-
-
-//   <nav className="z-10 bg-white fixed flex justify-between items-center w-full h-[80px]  border-b-1 border-gray-600 border-solid shadow-xl">
-      
-// <div className="ml-[40px] font-bold text-blue-950 text-[30px]">Logo</div>
-// <div className="navLinkCon mr-[70px] ">
-// <a className="px-4 font-[500]  text-[18px]  " href="#Home">HOME</a>
-// <a className="px-4 font-[500] text-[18px] " href="#About">ABOUT</a>
-
-// <a className="px-4 font-[500] text-[18px] transition duration-500" href="#IUC" >IUC</a>
-// <a className="px-4 font-[500] text-[18px]" href="#Course">COURSE</a>
-// <a className="px-4 font-[500] text-[18px]" href="#New" >NEW&EVENTS</a>
-// </div>
-
-
-// </nav>
+    
 
 
 
